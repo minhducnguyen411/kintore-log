@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>記録入力 - 筋トレ歴史の記録</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style1.css" />
+  </head>
+  <body class="bg-dark">
+    <div class="app-container">
+      <header>
+        <a href="index.html" class="back-btn"
+          ><i class="fa-solid fa-arrow-left"></i> ホームへ</a
+        >
+        <h1>今日の記録追加</h1>
+      </header>
+
+      <main>
+        <form id="input-form" class="input-form" novalidate>
+          <!-- 日付（デフォルトは今日。過去の記録も入れられる） -->
+          <div class="form-group">
+            <label for="val-date">日付</label>
+            <input type="date" id="val-date" class="input-field" required />
+          </div>
+
+          <!-- 種目リスト（部位ごとにグループ分け） -->
+          <div class="form-group">
+            <label for="exercise-select">種目を選択</label>
+            <select id="exercise-select" class="input-field">
+              <optgroup label="胸">
+                <option>Bench Press</option>
+                <option>Incline Dumbbell Press</option>
+                <option>Chest Fly</option>
+              </optgroup>
+              <optgroup label="背中">
+                <option>Lat Pulldown</option>
+                <option>Barbell Row</option>
+                <option>Deadlift</option>
+              </optgroup>
+              <optgroup label="脚">
+                <option>Squat</option>
+                <option>Leg Press</option>
+              </optgroup>
+              <optgroup label="肩">
+                <option>Shoulder Press</option>
+                <option>Lateral Raise</option>
+              </optgroup>
+              <optgroup label="腕">
+                <option>Dumbbell Curl</option>
+                <option>Barbell Curl</option>
+                <option>Triceps Pushdown</option>
+              </optgroup>
+              <optgroup label="マイ種目" id="my-exercises"></optgroup>
+              <option value="add-new" class="add-new-option">
+                + 新しい種目を追加...
+              </option>
+            </select>
+          </div>
+
+          <!-- セットごとに 重量 × レップ を入力 -->
+          <div class="form-group">
+            <label>セット</label>
+            <div class="set-header">
+              <span>#</span><span>重量 (kg)</span><span>レップ</span><span></span>
+            </div>
+            <div id="set-list"></div>
+            <button type="button" id="add-set-btn" class="add-set-btn">
+              <i class="fa-solid fa-plus"></i> セット追加
+            </button>
+          </div>
+
+          <div class="form-group">
+            <label for="val-rest">インターバル</label>
+            <input
+              type="text"
+              id="val-rest"
+              class="input-field"
+              placeholder="例: 1'30&quot;"
+              maxlength="20"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="val-memo">メモ</label>
+            <textarea
+              class="input-field"
+              rows="3"
+              id="val-memo"
+              placeholder="今日の体調など..."
+              maxlength="500"
+            ></textarea>
+          </div>
+
+          <!-- エラーがあればここに表示する -->
+          <p id="form-error" class="form-error" hidden></p>
+
+          <div class="form-buttons">
+            <a href="index.html" class="cancel-btn">キャンセル</a>
+            <button type="submit" class="submit-btn">登録する</button>
+          </div>
+        </form>
+      </main>
+    </div>
+
+    <script type="module" src="js/input.js"></script>
+  </body>
+</html>

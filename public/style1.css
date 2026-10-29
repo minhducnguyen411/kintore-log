@@ -1,0 +1,193 @@
+:root {
+  --bg-color: #433f3f;
+  --primary-color: #ccff00;
+  --text-main: #e2cdcd;
+  --text-muted: #888888;
+  --border-color: #333333;
+}
+
+.back-btn {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+body {
+  margin: 0;
+  background-color: #121212;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 20px;
+  background-color: #1e1e1e;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  z-index: 10;
+}
+
+header h1 {
+  font-size: 18px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 480px;
+  background-color: var(--bg-color);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 0 20px rgba(204, 255, 0, 0.1);
+  overflow-y: auto;
+}
+
+.input-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  font-weight: bold;
+}
+
+.input-field {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  color: #000000;
+  padding: 14px 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.submit-btn {
+  background-color: var(--primary-color);
+  color: #1a1a1a;
+  border: none;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: auto;
+}
+
+/* --- セット入力 --- */
+.set-header,
+.set-row {
+  display: grid;
+  grid-template-columns: 24px 1fr 1fr 36px;
+  gap: 8px;
+  align-items: center;
+}
+
+.set-header span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.set-row {
+  margin-bottom: 8px;
+}
+
+.set-no {
+  color: var(--primary-color);
+  font-weight: bold;
+  text-align: center;
+}
+
+.set-row .input-field {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+}
+
+.remove-set-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.add-set-btn {
+  background: none;
+  border: 1px dashed var(--primary-color);
+  color: var(--primary-color);
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-new-option {
+  font-weight: bold;
+}
+
+.form-error {
+  background-color: rgba(255, 80, 80, 0.15);
+  border: 1px solid #ff5050;
+  color: #ffb3b3;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.form-buttons > * {
+  flex: 1;
+  margin-top: 0;
+}
+
+.cancel-btn {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  padding: 16px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+}
+
+/* 数字入力の上下矢印を消す */
+.set-row input::-webkit-outer-spin-button,
+.set-row input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.set-row input[type="number"] {
+  -moz-appearance: textfield;
+}

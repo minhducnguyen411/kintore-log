@@ -1,0 +1,20 @@
+{
+  "name": "kintore-log",
+  "version": "1.0.0",
+  "description": "筋トレ歴史の記録: モバイルファーストの筋トレ記録Webアプリ",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "node dev-server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.0"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.10"
+  }
+}

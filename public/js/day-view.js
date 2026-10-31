@@ -46,6 +46,12 @@ async function loadRecords() {
   // TODO 4: Với mỗi workout trong todays, tạo thẻ và gắn vào list:
   //           list.append(createRecordCard(workout, { isNew: workout.id === newId, onDelete: deleteRecord }));
   //         Gợi ý: for (const workout of todays) { ... }
+  for (const workout of todays) {
+    const isNew = workout.id === newId; // ① có phải bản ghi vừa thêm? true / false
+    const options = { isNew: isNew, onDelete: deleteRecord }; // ② gói tuỳ chọn thành 1 object
+    const card = createRecordCard(workout, options); // ③ vẽ thẻ (hàm ở record-card.js)
+    list.append(card); // ④ gắn thẻ lên trang
+  }
 }
 
 /* ===== 3. 記録を削除する ===== */
@@ -56,11 +62,21 @@ async function deleteRecord(workout) {
   //
   // TODO 5: fetch tới URL `/api/records/${workout.id}` với method "DELETE"
   //         và header "X-Device-Id". (Chú ý dấu ` chứ không phải dấu ")
-  //
+  const res = await fetch(`/api/records/${workout.id}`, {
+    method: "DELETE",
+    headers: {
+      "X-Device-Id": getDeviceId(),
+    },
+  });
   //         ⚠️ Không cần await res.json(): 204 = server không gửi gì về.
   //
   // TODO 6: Nếu res.status là 204 (xoá thành công) thì gọi loadRecords() để vẽ lại danh sách.
   //         Nếu không thì alert("削除できませんでした");
+  if (res.status === 204) {
+    await loadRecords();
+  } else {
+    alert("削除できませんでした");
+  }
 }
 
 loadRecords().catch(() => {

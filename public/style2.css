@@ -180,3 +180,46 @@ main {
   background-color: var(--primary-hover);
   transform: scale(0.98);
 }
+
+/* --- 記録一覧 (JS で作るカード) --- */
+.record-list {
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.record-list .record-card {
+  text-align: left;
+}
+
+.detail-header-title {
+  text-align: center;
+  font-size: 18px;
+  color: var(--primary-color);
+  margin-bottom: 25px;
+}
+
+.record-card.new {
+  border-color: var(--primary-color);
+}
+
+.new-badge {
+  background-color: var(--primary-color);
+  color: #000;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.delete-btn:hover {
+  color: #ff6b6b;
+}

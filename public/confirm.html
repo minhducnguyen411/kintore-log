@@ -2,12 +2,8 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=No"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>データ確認 - 筋トレ歴史の記録</title>
-    <!-- FontAwesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -17,8 +13,8 @@
   <body>
     <div class="app-container">
       <header>
-        <a href="input.html" class="back-btn"
-          ><i class="fa-solid fa-chevron-left"></i> 修正する</a
+        <a href="index.html" class="back-btn"
+          ><i class="fa-solid fa-chevron-left"></i> ホームへ</a
         >
       </header>
 
@@ -26,97 +22,21 @@
         <h2 class="confirm-title">
           <i class="fa-solid fa-check-circle"></i> 記録完了
         </h2>
-        <p class="confirm-date" id="current-date">2026年07月15日</p>
+        <p class="confirm-date" id="day-date"></p>
 
-        <!-- first excercise -->
-        <div class="record-card">
-          <div class="record-card-header">
-            <span class="exercise-name" id="display-exercise"></span>
-          </div>
-          <table class="record-table">
-            <tr>
-              <th>重量 (kg)</th>
-              <td id="display-weight"></td>
-            </tr>
-            <tr>
-              <th>レップ</th>
-              <td id="display-reps"></td>
-            </tr>
-            <tr>
-              <th>セット</th>
-              <td id="display-sets"></td>
-            </tr>
-            <tr>
-              <th>インターバル</th>
-              <td id="display-rest"></td>
-            </tr>
-          </table>
-          <div class="memo-box">メモ: <span id="display-memo">-</span></div>
-        </div>
-        <!-- demo data -->
-        <div class="record-card">
-          <div class="record-card-header">
-            <span class="exercise-name">Lat Pulldown</span>
-          </div>
-          <table class="record-table">
-            <tr>
-              <th>重量 (kg)</th>
-              <td>60 - 65 - 70</td>
-            </tr>
-            <tr>
-              <th>レップ</th>
-              <td>10 - 8 - 8</td>
-            </tr>
-            <tr>
-              <th>セット</th>
-              <td>3</td>
-            </tr>
-            <tr>
-              <th>インターバル</th>
-              <td>1'30"</td>
-            </tr>
-          </table>
-          <div class="memo-box">メモ: ２種目以上の模擬</div>
-        </div>
+        <!-- この日の記録が JS でここに並ぶ -->
+        <div id="record-list" class="record-list">読み込み中...</div>
       </main>
 
       <!-- 機能ボタン -->
       <div class="bottom-action-bar">
-        <!-- 次に追加する -->
-        <a href="input.html" class="btn btn-secondary">
+        <a id="add-link" href="input.html" class="btn btn-secondary">
           <i class="fa-solid fa-plus"></i> 種目追加
         </a>
-        <!-- 完了またはホームに戻る -->
-        <a href="index.html" class="btn btn-primary"> 完了 (ホーム) </a>
+        <a href="index.html" class="btn btn-primary">完了 (ホーム)</a>
       </div>
     </div>
 
-    <script>
-      const today = new Date();
-      const year = today.getFullYear();
-      const month = String(today.getMonth() + 1).padStart(2, "0");
-      const day = String(today.getDate()).padStart(2, "0");
-      document.getElementById("current-date").innerText =
-        `${year}年${month}月${day}日`;
-      // 2. RETRIEVE DATA FROM LOCAL STORAGE AND FILL THE TABLE
-      // Check if there is any data saved under the key "myLastWorkout"
-      const savedDataString = localStorage.getItem("myLastWorkout");
-
-      if (savedDataString) {
-        // Parse the JSON string back into a usable JavaScript object
-        const data = JSON.parse(savedDataString);
-
-        // Inject the data into the corresponding HTML elements using their IDs
-        document.getElementById("display-exercise").innerText = data.exercise;
-        document.getElementById("display-weight").innerText = data.weight;
-        document.getElementById("display-reps").innerText = data.reps;
-        document.getElementById("display-sets").innerText = data.sets;
-        document.getElementById("display-rest").innerText = data.rest;
-        document.getElementById("display-memo").innerText = data.memo;
-
-        // Optional: Remove the data after displaying it to keep storage clean
-        // localStorage.removeItem("myLastWorkout");
-      }
-    </script>
+    <script type="module" src="js/day-view.js"></script>
   </body>
 </html>
